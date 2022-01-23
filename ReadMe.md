@@ -47,3 +47,19 @@ If we want to do different control, we can use the customValidation() method in 
 ```php
 $formVal->name("Address")->value($address)->customValidation("/pattern/", "Your address is wrong..")->required();
 ```
+
+After making our form control, we can simply inform the user.
+
+```php
+if($formVal->isSuccess() === true){
+    echo "Form check successful";
+    .
+    .
+}else{
+    echo $formVal->isSuccess()["Name"];
+    echo $formVal->isSuccess()["E-mail"];
+    .
+    .
+    .
+}
+```
