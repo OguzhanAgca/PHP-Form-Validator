@@ -51,8 +51,13 @@ class FormValidation
         $allowedSize = number_format($allowedSize / 1048576, 2, ".", null); // Byte -> Mb
         $fileSize = number_format($fileSize / 1048576, 2, ".", null); // Byte -> Mb
 
+        $allowedExtStr = "";
+        foreach ($allowedExt as $value) {
+            $allowedExtStr .= " $value";
+        }
+
         if (!in_array($ext, $allowedExt)) {
-            $this->errorMsg[$this->name] = "You can not upload $ext files.";
+            $ext ? $this->errorMsg[$this->name] = "You can upload only $allowedExtStr files." : null;
         }
 
         if ($allowedSize < $fileSize) {
